@@ -1,4 +1,4 @@
-# UIActionSheet + Blocks.h
+# UIAlertView + Blocks.h
 Copyright (c) 2014 Mervyn Ong. All rights reserved.
 
 Simply put, this is a block-based soluation for UIAlertView to avoid the need of using a delegate
