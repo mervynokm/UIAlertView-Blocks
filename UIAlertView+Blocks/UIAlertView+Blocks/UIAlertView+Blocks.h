@@ -28,20 +28,20 @@
 #import <UIKit/UIKit.h>
 
 typedef void(^AlertBlock)(UIAlertView *alertView);
-typedef void(^CompletionBlock)(UIAlertView *alertView, NSInteger buttonIndex);
+typedef void(^AlertCompletionBlock)(UIAlertView *alertView, NSInteger buttonIndex);
 
 @interface UIAlertView (Blocks) <UIAlertViewDelegate>
 
-+(instancetype)showAlertViewWithCompletion:(CompletionBlock)completionBlock
++(instancetype)showAlertViewWithCompletion:(AlertCompletionBlock)completionBlock
                                   forTitle:(NSString *)title
                                    message:(NSString *)message
                          cancelButtonTitle:(NSString *)cancelButtonTitle
                          otherButtonTitles:(NSString *)otherButtonTitles, ... NS_REQUIRES_NIL_TERMINATION;
 
-@property (nonatomic, copy) CompletionBlock completionBlock;
+@property (nonatomic, copy) AlertCompletionBlock completionBlock;
 @property (nonatomic, copy) AlertBlock willPresentBlock;
 @property (nonatomic, copy) AlertBlock didPresentBlock;
-@property (nonatomic, copy) CompletionBlock willDismissBlock;
-@property (nonatomic, copy) CompletionBlock didDismissBlock;
+@property (nonatomic, copy) AlertCompletionBlock willDismissBlock;
+@property (nonatomic, copy) AlertCompletionBlock didDismissBlock;
 
 @end

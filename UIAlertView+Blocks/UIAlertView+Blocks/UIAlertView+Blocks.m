@@ -39,7 +39,7 @@ static const char kAlertViewDidDismissBlock;
 
 #pragma mark - Public Class Methods
 
-+(instancetype)showAlertViewWithCompletion:(CompletionBlock)completionBlock
++(instancetype)showAlertViewWithCompletion:(AlertCompletionBlock)completionBlock
                                   forTitle:(NSString *)title
                                    message:(NSString *)message
                          cancelButtonTitle:(NSString *)cancelButtonTitle
@@ -76,12 +76,12 @@ static const char kAlertViewDidDismissBlock;
     }
 }
 
--(CompletionBlock)completionBlock
+-(AlertCompletionBlock)completionBlock
 {
     return objc_getAssociatedObject(self, &kAlertViewCompletionBlock);
 }
 
--(void)setCompletionBlock:(CompletionBlock)completionBlock
+-(void)setCompletionBlock:(AlertCompletionBlock)completionBlock
 {
     [self checkDelegate];
     objc_setAssociatedObject(self, &kAlertViewCompletionBlock, completionBlock, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
@@ -109,30 +109,30 @@ static const char kAlertViewDidDismissBlock;
     objc_setAssociatedObject(self, &kAlertViewDidPresentBlock, didPresentBlock, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
--(CompletionBlock)willDismissBlock
+-(AlertCompletionBlock)willDismissBlock
 {
     return objc_getAssociatedObject(self, &kAlertViewWillDismissBlock);
 }
 
--(void)setWillDismissBlock:(CompletionBlock)willDismissBlock
+-(void)setWillDismissBlock:(AlertCompletionBlock)willDismissBlock
 {
     [self checkDelegate];
     objc_setAssociatedObject(self, &kAlertViewWillDismissBlock, willDismissBlock, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
--(CompletionBlock)didDismissBlock
+-(AlertCompletionBlock)didDismissBlock
 {
     return objc_getAssociatedObject(self, &kAlertViewDidDismissBlock);
 }
 
--(void)setDidDismissBlock:(CompletionBlock)didDismissBlock
+-(void)setDidDismissBlock:(AlertCompletionBlock)didDismissBlock
 {
     [self checkDelegate];
     objc_setAssociatedObject(self, &kAlertViewDidDismissBlock, didDismissBlock, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 
-#pragma mark - UIAlertViewDelegate 
+#pragma mark - UIAlertViewDelegate
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
